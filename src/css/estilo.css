@@ -1,0 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap');
+ 
+:root {
+  --bg:        #111;
+  --bg2:       #161616;
+  --card:      #1a1a1a;
+  --border:    #2a2a2a;
+  --border2:   #333;
+  --texto:     #e8e8e8;
+  --suave:     #666;
+  --suave2:    #444;
+  --branco:    #fff;
+  --acento:    #f0f0f0;
+  --destaque:  #e5e5e5;
+  --radius:    4px;
+  --radius-lg: 12px;
+}
