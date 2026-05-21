@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>VoltMoto — Carrinho</title>
+  <link rel="stylesheet" href="../src/css/estilo.css"/>
+</head>
+<body>
+ 
+  <div class="toast" id="toast"></div>
+ 
+  <nav>
+    <a href="../index.html" class="nav-logo">VOLT<span>MOTO</span></a>
+    <ul class="nav-links">
+      <li><a href="../index.html">Início</a></li>
+      <li><a href="loja.html" class="ativo">Carrinho</a></li>
+      <li><a href="sobre.html">Sobre</a></li>
+    </ul>
+    <a href="loja.html" class="nav-cart">
+      Carrinho <span class="cart-badge" id="badge">0</span>
+    </a>
+  </nav>
+ 
+  <section class="secao">
+    <div class="secao-header">
+      <span class="secao-titulo">Carrinho de Compras</span>
+    </div>
+    <div class="carrinho-layout">
+      <ul class="carrinho-lista" id="carrinho-lista"></ul>
+      <aside id="resumo-container">
+        <div class="resumo-box">
+          <h3>Resumo do Pedido</h3>
+          <div class="resumo-linha">
+            <span class="rl">Subtotal</span>
+            <span class="rv" id="subtotal-valor">R$ 0,00</span>
+          </div>
+          <div class="resumo-linha">
+            <span class="rl">Desconto (10%)</span>
+            <span class="rv" id="desconto-valor">R$ 0,00</span>
+          </div>
+          <div class="resumo-total">
+            <span class="rl">Total</span>
+            <span id="total-valor">R$ 0,00</span>
+          </div>
+          <button class="btn-desc" id="btn-desconto">Aplicar cupom 10% OFF</button>
+          <button class="btn-fin" id="btn-finalizar">Finalizar Compra</button>
+        </div>
+      </aside>
+    </div>
+  </section>
+ 
+  <footer><p>© 2025 <span>VoltMoto</span> — Zero emissões, máxima emoção</p></footer>
+ 
+  <script src="../src/js/script.js"></script>
+</body>
+</html>
