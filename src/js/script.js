@@ -41,3 +41,53 @@ const produtos = [
     img:"" 
 }
 ];
+
+
+const fmt = v => v.toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
+ 
+// ── CARRINHO (sessionStorage) ─────────────────────────────────────────────────
+function getCarrinho() {
+  try { return JSON.parse(sessionStorage.getItem("voltmoto_cart") || "[]"); }
+  catch { return []; }
+}
+function setCarrinho(c) { sessionStorage.setItem("voltmoto_cart", JSON.stringify(c)); }
+function totalC(c)  { return c.reduce((a, i) => a + i.preco * i.quantidade, 0); }
+function qtdC(c)    { return c.reduce((a, i) => a + i.quantidade, 0); }
+ 
+// ── BADGE ─────────────────────────────────────────────────────────────────────
+function atualizarBadge() {
+  const badge = document.getElementById("badge");
+  if (!badge) return;
+  const n = qtdC(getCarrinho());
+  badge.textContent = n;
+  badge.style.display = n ? "flex" : "none";
+}
+ 
+// ── TOAST ─────────────────────────────────────────────────────────────────────
+function toast(msg) {
+  const el = document.getElementById("toast");
+  if (!el) return;
+  el.textContent = msg;
+  el.classList.add("show");
+  setTimeout(() => el.classList.remove("show"), 2000);
+}
+ 
+// ── ADICIONAR AO CARRINHO ─────────────────────────────────────────────────────
+function adicionarAoCarrinho(id) {
+  const produto = produtos.find(p => p.id === id);
+  if (!produto) return;
+  const carrinho = getCarrinho();
+  const exist = carrinho.find(i => i.id === id);
+  if (exist) exist.quantidade++;
+  else carrinho.push({ ...produto, quantidade: 1 });
+  setCarrinho(carrinho);
+  atualizarBadge();
+  toast(produto.nome + " adicionado!");
+ 
+  const btn = document.querySelector(`[data-id="${id}"]`);
+  if (btn) {
+    btn.classList.add("adicionado");
+    btn.textContent = "Adicionado ✓";
+    setTimeout(() => { btn.classList.remove("adicionado"); btn.textContent = "Adicionar"; }, 1400);
+  }
+}
