@@ -15,3 +15,213 @@
   --radius:    4px;
   --radius-lg: 12px;
 }
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--bg);
+  color: var(--texto);
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
+ 
+/* ── NAV ── */
+nav {
+  height: 60px;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 2rem;
+  position: sticky;
+  top: 0;
+  z-index: 200;
+  background: rgba(17,17,17,0.97);
+  backdrop-filter: blur(12px);
+}
+.nav-logo {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.4rem;
+  text-decoration: none;
+  color: var(--branco);
+  letter-spacing: 2px;
+}
+.nav-links { list-style: none; display: flex; gap: 2rem; }
+.nav-links a {
+  color: var(--suave);
+  text-decoration: none;
+  font-size: 0.85rem;
+  font-weight: 500;
+  transition: color 0.15s;
+}
+.nav-links a:hover, .nav-links a.ativo { color: var(--branco); }
+.nav-cart {
+  background: var(--branco);
+  color: #111;
+  border: none;
+  padding: 0.45rem 1rem;
+  border-radius: var(--radius);
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 700;
+  font-size: 0.82rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: opacity 0.2s;
+  text-decoration: none;
+}
+.nav-cart:hover { opacity: 0.85; }
+.cart-badge {
+  background: #111;
+  color: #fff;
+  border-radius: var(--radius);
+  width: 18px; height: 18px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.7rem; font-weight: 900;
+}
+ 
+/* ── HERO ── */
+.hero { padding: 5rem 2rem 4rem; max-width: 1100px; margin: 0 auto; }
+.hero-eyebrow {
+  font-size: 0.72rem; font-weight: 600; text-transform: uppercase;
+  letter-spacing: 3px; color: var(--suave); margin-bottom: 1.5rem;
+}
+.hero h1 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(3rem, 8vw, 6rem);
+  font-weight: 400; line-height: 0.95;
+  letter-spacing: 2px; color: var(--branco); margin-bottom: 1.5rem;
+}
+.hero h1 em { font-style: normal; color: var(--acento); }
+.hero p { font-size: 0.95rem; color: var(--suave); max-width: 400px; line-height: 1.7; }
+.hero-divider { width: 100%; height: 1px; background: var(--border); margin: 3.5rem 0 0; }
+ 
+/* ── SEÇÃO ── */
+.secao { max-width: 1100px; margin: 0 auto; padding: 2.5rem 2rem 5rem; }
+.secao-header {
+  display: flex; align-items: baseline; justify-content: space-between;
+  margin-bottom: 1.5rem; padding-bottom: 1rem; border-bottom: 1px solid var(--border);
+}
+.secao-titulo { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 3px; color: var(--suave); }
+.secao-count { font-size: 0.72rem; color: var(--suave2); }
+ 
+/* ── FILTROS ── */
+.filtros { display: flex; gap: 0.4rem; margin-bottom: 2rem; flex-wrap: wrap; }
+.filtro-btn {
+  background: transparent; border: 1px solid var(--border2);
+  color: var(--suave); padding: 0.3rem 0.9rem;
+  border-radius: var(--radius); font-family: 'DM Sans', sans-serif;
+  font-weight: 500; font-size: 0.75rem; cursor: pointer; transition: all 0.15s;
+}
+.filtro-btn.ativo, .filtro-btn:hover { border-color: var(--branco); color: var(--branco); }
+ 
+/* ── GRID ── */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1px; border: 1px solid var(--border);
+}
+ 
+/* ── CARD ── */
+.card { background: var(--card); display: flex; flex-direction: column; transition: background 0.2s; animation: fadeUp 0.4s ease both; }
+.card:hover { background: #202020; }
+@keyframes fadeUp { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: translateY(0); } }
+.card-img { width: 100%; aspect-ratio: 1; background: var(--bg2); display: flex; align-items: center; justify-content: center; font-size: 3.5rem; }
+.card-body { padding: 1.1rem; display: flex; flex-direction: column; flex: 1; gap: 0.45rem; }
+.card-badge { font-size: 0.65rem; font-weight: 600; text-transform: uppercase; letter-spacing: 2px; color: var(--suave); }
+.card-nome { font-family: 'Bebas Neue', sans-serif; font-size: 1.15rem; color: var(--branco); line-height: 1.1; letter-spacing: 1px; }
+.card-desc { font-size: 0.78rem; color: var(--suave); line-height: 1.6; flex: 1; }
+.card-footer { display: flex; align-items: center; justify-content: space-between; margin-top: 0.6rem; padding-top: 0.6rem; border-top: 1px solid var(--border); }
+.card-preco { font-family: 'Bebas Neue', sans-serif; font-size: 1.05rem; color: var(--branco); letter-spacing: 0.5px; }
+.card-btn {
+  background: transparent; border: 1px solid var(--border2);
+  color: var(--suave); padding: 0.35rem 0.7rem;
+  font-family: 'DM Sans', sans-serif; font-weight: 600; font-size: 0.72rem;
+  cursor: pointer; border-radius: var(--radius); transition: all 0.15s;
+}
+.card-btn:hover { border-color: var(--branco); color: var(--branco); }
+.card-btn.adicionado { border-color: var(--acento); color: var(--acento); }
+ 
+/* ── TOAST ── */
+.toast {
+  position: fixed; bottom: 1.5rem; left: 50%;
+  transform: translateX(-50%) translateY(80px); opacity: 0;
+  background: var(--branco); color: #111;
+  padding: 0.65rem 1.25rem; border-radius: var(--radius-lg);
+  font-weight: 700; font-size: 0.85rem; z-index: 9999;
+  transition: all 0.3s cubic-bezier(.34,1.56,.64,1); white-space: nowrap;
+}
+.toast.show { transform: translateX(-50%) translateY(0); opacity: 1; }
+ 
+/* ── CARRINHO PAGE (loja.html) ── */
+.carrinho-layout { display: grid; grid-template-columns: 1fr 340px; gap: 2rem; align-items: start; }
+@media (max-width: 860px) { .carrinho-layout { grid-template-columns: 1fr; } }
+.carrinho-lista { list-style: none; display: flex; flex-direction: column; gap: 0.75rem; }
+.carrinho-item {
+  display: flex; align-items: center; gap: 1rem;
+  padding: 1rem; border: 1px solid var(--border);
+  border-radius: var(--radius-lg); background: var(--card); transition: border-color 0.15s;
+}
+.carrinho-item:hover { border-color: var(--border2); }
+.item-img { width: 60px; height: 60px; border-radius: var(--radius); background: var(--bg2); flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 1.8rem; }
+.item-info { flex: 1; }
+.item-nome { font-family: 'Bebas Neue', sans-serif; font-size: 1rem; letter-spacing: 1px; color: var(--branco); }
+.item-qtd { font-size: 0.75rem; color: var(--suave); margin-top: 2px; }
+.item-valor { font-family: 'Bebas Neue', sans-serif; font-size: 1.05rem; color: var(--branco); white-space: nowrap; }
+ 
+/* ── RESUMO ── */
+.resumo-box {
+  border: 1px solid var(--border); border-radius: var(--radius-lg);
+  padding: 1.5rem; background: var(--card); position: sticky; top: 80px;
+}
+.resumo-box h3 { font-family: 'Bebas Neue', sans-serif; font-size: 1rem; letter-spacing: 2px; text-transform: uppercase; color: var(--suave); margin-bottom: 1.5rem; }
+.resumo-linha { display: flex; justify-content: space-between; align-items: center; padding: 0.6rem 0; border-bottom: 1px solid var(--border); }
+.resumo-linha:last-of-type { border-bottom: none; }
+.resumo-linha .rl { font-size: 0.72rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1.5px; color: var(--suave); }
+.resumo-linha .rv { font-size: 0.85rem; font-weight: 600; color: var(--texto); }
+.resumo-linha .rv.verde { color: var(--acento); }
+.resumo-total { display: flex; justify-content: space-between; align-items: baseline; padding: 1rem 0; border-top: 1px solid var(--border2); margin-top: 0.5rem; }
+.resumo-total .rl { font-size: 0.68rem; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; color: var(--suave); }
+#total-valor { font-family: 'Bebas Neue', sans-serif; font-size: 2rem; color: var(--branco); letter-spacing: 1px; transition: color 0.3s; }
+#total-valor.com-desconto { color: var(--destaque); }
+.btn-desc {
+  width: 100%; margin-top: 1rem; margin-bottom: 0.5rem; padding: 0.7rem;
+  background: transparent; border: 1px solid var(--border2);
+  color: var(--suave); font-family: 'DM Sans', sans-serif; font-weight: 600;
+  font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px;
+  cursor: pointer; border-radius: var(--radius); transition: all 0.15s;
+}
+.btn-desc:hover:not(:disabled) { border-color: var(--branco); color: var(--branco); }
+.btn-desc:disabled { opacity: 0.3; cursor: not-allowed; }
+.btn-fin {
+  width: 100%; padding: 0.82rem; background: var(--branco); border: none;
+  color: #111; font-family: 'DM Sans', sans-serif; font-weight: 700;
+  font-size: 0.88rem; cursor: pointer; border-radius: var(--radius); transition: opacity 0.15s;
+}
+.btn-fin:hover { opacity: 0.85; }
+.carrinho-vazio { text-align: center; padding: 4rem 1rem; color: var(--suave); }
+.carrinho-vazio span { font-size: 3rem; display: block; margin-bottom: 1rem; opacity: 0.3; }
+.carrinho-vazio p { font-size: 0.88rem; margin-bottom: 1.5rem; }
+.carrinho-vazio a {
+  display: inline-block; padding: 0.6rem 1.4rem;
+  border: 1px solid var(--border2); color: var(--suave);
+  text-decoration: none; border-radius: var(--radius);
+  font-size: 0.8rem; font-weight: 600; transition: all 0.15s;
+}
+.carrinho-vazio a:hover { border-color: var(--branco); color: var(--branco); }
+ 
+/* ── SOBRE ── */
+.sobre { max-width: 680px; margin: 0 auto; padding: 5rem 2rem; }
+.sobre h2 { font-family: 'Bebas Neue', sans-serif; font-size: clamp(2.5rem,6vw,4rem); font-weight: 400; letter-spacing: 2px; color: var(--branco); margin-bottom: 0.5rem; line-height: 1; }
+.sobre-sub { font-size: 0.72rem; color: var(--suave); text-transform: uppercase; letter-spacing: 3px; font-weight: 600; margin-bottom: 3rem; display: block; }
+.sobre-bloco { border-top: 1px solid var(--border); padding: 1.5rem 0; font-size: 0.88rem; color: var(--suave); line-height: 1.8; }
+.sobre-bloco strong { color: var(--texto); }
+.sobre-nums { display: grid; grid-template-columns: repeat(3,1fr); gap: 1px; border: 1px solid var(--border); margin: 3rem 0; }
+.num-card { padding: 2rem 1.5rem; background: var(--card); }
+.num-card .n { font-family: 'Bebas Neue', sans-serif; font-size: 2.5rem; color: var(--acento); display: block; letter-spacing: 1px; }
+.num-card .nl { font-size: 0.68rem; color: var(--suave); text-transform: uppercase; letter-spacing: 2px; font-weight: 600; margin-top: 0.25rem; display: block; }
+ 
+/* ── FOOTER ── */
+footer { border-top: 1px solid var(--border); padding: 2rem; text-align: center; color: var(--suave); font-size: 0.75rem; letter-spacing: 0.5px; }
+footer span { color: var(--acento); }
