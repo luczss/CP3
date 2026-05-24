@@ -200,7 +200,7 @@ function finalizarCompra() {
   const carrinho = getCarrinho();
   if (!carrinho.length) { toast("Carrinho vazio!"); return; }
   const val = document.getElementById("total-valor")?.textContent || "";
-  alert(`Compra finalizada! \n\nTotal: ${val}\n\nObrigado pela compra na VoltMoto!`);
+  alert(`Compra finalizada! \n\nTotal: ${val}\n\nObrigado pela compra na MotoVerde!`);
   setCarrinho([]);
   descontoAplicado = false;
   atualizarBadge();
