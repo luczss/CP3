@@ -6,40 +6,40 @@ const produtos = [
     nome:"Maeving RM1",    
     descricao:"Café racer elétrica com design retrô e tecnologia moderna.", 
     preco:60000, 
-    img:"" 
-},
+    img:"../src/assets/img/maeving.jpg"
+  },
   { 
     id:2, 
     modelo:"Moto Cross",      
     nome:"Sur-Ron Light Bee",  
     descricao:"Moto off-road leve e potente para trilhas e terrenos difíceis.", 
     preco:35000, 
-    img:"" 
-},
+    img:"../src/assets/img/sur-ron.jpg"
+  },
   { 
     id:3, 
     modelo:"Urbana", 
     nome:"Voltz EV1",  
     descricao:"Scooter elétrica urbana, econômica e perfeita para o dia a dia na cidade.", 
     preco:25000, 
-    img:"" 
-},
+    img:"../src/assets/img/ev1.jpg"
+  },
   { 
     id:4, 
     modelo:"Sport",   
     nome:"Zero SR/F", 
     descricao:"Moto elétrica esportiva com aceleração forte e visual moderno.", 
     preco:120000, 
-    img:"" 
-},
+    img:"../src/assets/img/srf.jpg"
+  },
   { 
     id:5, 
     modelo:"Adventure",   
     nome:"Zero DSR/X",  
     descricao:"Modelo adventure ideal para viagens, estradas e trilhas.", 
     preco:150000, 
-    img:"" 
-}
+    img:"../src/assets/img/dsrx.jpg"
+  }
 ];
 
 
@@ -91,19 +91,20 @@ function adicionarAoCarrinho(id) {
     setTimeout(() => { btn.classList.remove("adicionado"); btn.textContent = "Adicionar"; }, 1400);
   }
 }
+
 // ── FILTROS + GRID (index.html) ───────────────────────────────────────────────
 let filtroAtivo = "Todos";
  
 function renderFiltros() {
   const div = document.getElementById("filtros");
   if (!div) return;
-  const badges = ["Todos", ...new Set(produtos.map(p => p.badge))];
+  const modelos = ["Todos", ...new Set(produtos.map(p => p.modelo))];
   div.innerHTML = "";
-  badges.forEach(b => {
+  modelos.forEach(m => {
     const btn = document.createElement("button");
-    btn.className = "filtro-btn" + (b === filtroAtivo ? " ativo" : "");
-    btn.textContent = b;
-    btn.onclick = () => { filtroAtivo = b; renderFiltros(); renderProdutos(); };
+    btn.className = "filtro-btn" + (m === filtroAtivo ? " ativo" : "");
+    btn.textContent = m;
+    btn.onclick = () => { filtroAtivo = m; renderFiltros(); renderProdutos(); };
     div.appendChild(btn);
   });
 }
@@ -111,7 +112,7 @@ function renderFiltros() {
 function renderProdutos() {
   const grid = document.getElementById("grid-produtos");
   if (!grid) return;
-  const lista = filtroAtivo === "Todos" ? produtos : produtos.filter(p => p.badge === filtroAtivo);
+  const lista = filtroAtivo === "Todos" ? produtos : produtos.filter(p => p.modelo === filtroAtivo);
   const countEl = document.getElementById("count-label");
   if (countEl) countEl.textContent = lista.length + (lista.length === 1 ? " item" : " itens");
   grid.innerHTML = "";
@@ -120,9 +121,9 @@ function renderProdutos() {
     card.className = "card";
     card.style.animationDelay = `${i * 0.07}s`;
     card.innerHTML = `
-      <div class="card-img">${p.emoji}</div>
+      <div class="card-img"><img src="${p.img}" alt="${p.nome}" onerror="this.style.display='none'"/></div>
       <div class="card-body">
-        <span class="card-badge">${p.badge}</span>
+        <span class="card-badge">${p.modelo}</span>
         <h3 class="card-nome">${p.nome}</h3>
         <p class="card-desc">${p.descricao}</p>
         <div class="card-footer">
@@ -161,7 +162,7 @@ function renderCarrinhoPage() {
     const li = document.createElement("li");
     li.className = "carrinho-item";
     li.innerHTML = `
-      <div class="item-img">${item.emoji}</div>
+      <div class="item-img"><img src="${item.img}" alt="${item.nome}" onerror="this.style.display='none'"/></div>
       <div class="item-info">
         <p class="item-nome">${item.nome}</p>
         <p class="item-qtd">Qtd: ${item.quantidade}</p>
