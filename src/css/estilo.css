@@ -127,7 +127,8 @@ nav {
 .card { background: var(--card); display: flex; flex-direction: column; transition: background 0.2s; animation: fadeUp 0.4s ease both; }
 .card:hover { background: #202020; }
 @keyframes fadeUp { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: translateY(0); } }
-.card-img { width: 100%; aspect-ratio: 1; background: var(--bg2); display: flex; align-items: center; justify-content: center; font-size: 3.5rem; }
+.card-img { width: 100%; aspect-ratio: 1; background: var(--bg2); display: flex; align-items: center; justify-content: center; font-size: 3.5rem; overflow: hidden; }
+.card-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
 .card-body { padding: 1.1rem; display: flex; flex-direction: column; flex: 1; gap: 0.45rem; }
 .card-badge { font-size: 0.65rem; font-weight: 600; text-transform: uppercase; letter-spacing: 2px; color: var(--suave); }
 .card-nome { font-family: 'Bebas Neue', sans-serif; font-size: 1.15rem; color: var(--branco); line-height: 1.1; letter-spacing: 1px; }
@@ -164,7 +165,8 @@ nav {
   border-radius: var(--radius-lg); background: var(--card); transition: border-color 0.15s;
 }
 .carrinho-item:hover { border-color: var(--border2); }
-.item-img { width: 60px; height: 60px; border-radius: var(--radius); background: var(--bg2); flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 1.8rem; }
+.item-img { width: 60px; height: 60px; border-radius: var(--radius); background: var(--bg2); flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 1.8rem; overflow: hidden; }
+.item-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
 .item-info { flex: 1; }
 .item-nome { font-family: 'Bebas Neue', sans-serif; font-size: 1rem; letter-spacing: 1px; color: var(--branco); }
 .item-qtd { font-size: 0.75rem; color: var(--suave); margin-top: 2px; }
